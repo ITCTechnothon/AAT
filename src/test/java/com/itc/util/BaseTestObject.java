@@ -1,8 +1,6 @@
 package com.itc.util;
 
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Iterator;
@@ -10,15 +8,12 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.remote.BrowserType;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
@@ -31,10 +26,12 @@ public class BaseTestObject {
 	
 	FileInputStream fileInput =null;
 	//Properties ObjProperty = getPropertyContents();
-	Properties ObjProperty=getPropertyContents();
+	public Properties ObjProperty=getPropertyContents();
 	
 	public String browser = ObjProperty.getProperty("browser");
 	public String url = ObjProperty.getProperty("url");
+	
+	
 	/**
 	 
      * This function will execute before each Test tag in testng.xml

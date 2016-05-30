@@ -1,11 +1,8 @@
 package com.itc.pages;
 
-import java.sql.Driver;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -30,19 +27,14 @@ public class HomePage extends BasePageObject
 		
 	boolean flag = false;
 	List<WebElement> list=null;
-	String txt = null;
-	
+	public static Logger logger = Logger.getLogger(DeleteVendorPage.class);
+
 	/*Web elements*/
 	
 	By imgSiteLogo = By.xpath("//img[@alt='Aynax.com Logo']");
 	By lnkLogin = By.linkText("Login");
 	
-	/**
-	 * This method helps us to find the site Logo
-	 * @return boolean
-	 * @param No param
-	 * @throws Exception
-	 */
+	
 	public boolean isSiteLogoDisplayed() throws Exception
 	{
 		try 

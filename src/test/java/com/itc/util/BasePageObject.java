@@ -5,7 +5,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
@@ -21,8 +20,6 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
-
-
 
 public class BasePageObject {
 
@@ -72,6 +69,8 @@ public class BasePageObject {
         
         return element;
     }
+	
+	
 	/**
 	 * 
 	 * @param locator
@@ -127,12 +126,17 @@ public class BasePageObject {
 		driver.switchTo().window((String) winNames.toArray()[window - 1]);
 	}
 	
-	public  void mouseover(By theElement) {
-		new Actions(driver).moveToElement((WebElement) theElement).build().perform();
+	public  void mouseover(By theElement) throws Exception{
+		Actions act=new Actions(driver);
+		WebElement webelement=driver.findElement(theElement);
+		act.moveToElement(webelement).build().perform();
+		//new Actions(driver).moveToElement((WebElement) theElement).build().perform();
 	}
-
-	
-	public void selectDropDown(By theSelectElement, String valToSelect) {
+	/*public  WebElement mouseover(WebElement theElement) {
+		new Actions(driver).moveToElement(theElement).build().perform();
+		return theElement;
+	}*/
+	public void selectDropDown(By theSelectElement, String valToSelect) throws InterruptedException {
 		WebElement element = driver.findElement(theSelectElement);
 		Select select = new Select(element);
 		// Get a list of the options
@@ -142,6 +146,7 @@ public class BasePageObject {
 		for (WebElement we : options) {
 			if (we.getText().equals(valToSelect)) {
 				we.click();
+				Thread.sleep(2000);
 				break;
 			}
 		}
@@ -222,7 +227,7 @@ public class BasePageObject {
      */
     public void closePresentWindow() throws Exception {
         try {
-            driver.close();
+            //driver.close();
         } catch (Exception e) {
             throw new Exception(
                     "ISSUE IN CLOSING THE 'window'" + "\nMETHOD:clickOnCloseWindow\n" + e
