@@ -17,7 +17,7 @@ public class DeleteVendorPageTest extends BaseTestObject{
 	boolean flag1 = false;
 	String titleflag=null;
 		
-	@Parameters({"browserType","url"})
+	@Parameters({"browserType"})
 	@Test(priority=0, enabled=true,groups="Regression")
 	public void Login() throws Exception{
 		login.verifyLoginPage();
